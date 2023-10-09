@@ -49,7 +49,7 @@ colorizedGrep() {
         echo -e "$(tput setaf $color)$line$(tput sgr0)"
         line_count=$((line_count + 1))
         
-        if [ "$line_count" -ge 9 ]; then
+        if [ "$line_count" -ge 7 ]; then
             line_count=0
             color=$((color + increment))
             if [ "$color" -gt 7 ]; then
@@ -87,5 +87,5 @@ fi
 validateInputFormat "$ip_addr"
 
 # Now scan for open ports
-nmap -p $port $ip_addr | grep "open" -A 3 -B 4 | colorizedGrep
+nmap -p $port $ip_addr | grep "open" -A 1 -B 4 | colorizedGrep
 
